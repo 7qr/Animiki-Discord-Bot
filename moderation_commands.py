@@ -86,6 +86,7 @@ async def remove_mute(ctx, member: discord.Member, *, reason=None):
         url="https://media.tenor.com/SgQCLL1jAL4AAAAC/im-unmuted-im-muted.gif")
     await ctx.send(embed=embed)
 
+
 @remove_mute.error
 async def remove_mute_error(ctx, error):  # ---> This function handles remove_mute_errors
     if isinstance(error, commands.MissingPermissions):  # --> If someone doesn't have mod rights, raises an error.
