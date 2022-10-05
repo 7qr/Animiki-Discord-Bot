@@ -18,7 +18,7 @@ async def on_ready():
 @bot.command()
 @commands.has_permissions(ban_members=True)  # --- > This checks if who calls the command has ban rights
 async def ban(ctx, member: discord.Member, *, reason="unspecified reason"):
-    if member.id == ctx.author.id:  # --- > This checks if someone it's trying to ban themself.
+    if member.id == ctx.author.id:  # --- > This checks if someone it's trying to ban themselves.
         await ctx.send("You can't ban yourself, sorry! ;)")
         return
     else:
@@ -45,7 +45,7 @@ async def ban_error(ctx, error):  # -----> This function handles ban errors.
 @bot.command()
 @commands.has_permissions(moderate_members=True)   # ----> This checks if who calls the command has mod rights.
 async def mute(ctx, member: discord.Member, time, *, reason=None):
-    if member.id == ctx.author.id:  # --- > This checks if someone it's trying to mute themself.
+    if member.id == ctx.author.id:  # --- > This checks if someone it's trying to mute themselves.
         await ctx.send("You can't mute yourself, sorry! ;)")
         return
     else:
@@ -113,6 +113,7 @@ async def purge(ctx, channel: discord.TextChannel):
             "lg746q&rid=giphy.gif&ct=g")
     await ctx.send(embed=embed)
 
+
 @purge.error
 async def purge_error(ctx, error):  # ---> This function handles purge_errors
     if isinstance(error, commands.MissingPermissions):  # --> If someone doesn't have rights, raises an error.
@@ -145,6 +146,7 @@ async def purge_user(ctx, limit: int, member: discord.Member, reason=None):
         url="https://i.gifer.com/7L6q.gif")
     await ctx.send(embed=embed)
 
+
 @purge_user.error
 async def purge_user_error(ctx, error):   # ---> This function handles purge_user_errors
     if isinstance(error, commands.MissingPermissions):  # --> If someone doesn't have rights, raises an error.
@@ -162,7 +164,7 @@ async def purge_user_error(ctx, error):   # ---> This function handles purge_use
 @bot.command()
 @commands.has_permissions(kick_members=True)  # --> This checks if who calls it has kicking rights
 async def kick(ctx, member: discord.Member, reason=None):
-    if member.id == ctx.author.id:  # --> This checks if someone is trying to kick themself
+    if member.id == ctx.author.id:  # --> This checks if someone is trying to kick themselves
         await ctx.send("You can't kick yourself, sorry! ;)")
         return
     else:
